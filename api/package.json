@@ -1,0 +1,62 @@
+{
+	"name": "manual-approval",
+	"version": "1.0.0",
+	"description": "Abstract manual approval service for task orchestration and agentic workflows in AWS",
+	"type": "module",
+	"main": "src/index-local.ts",
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"typecheck": "tsc --noEmit",
+		"dev": "NODE_ENV=development node --watch src/index.ts",
+		"start": "node src/index.ts",
+		"run-job-runner": "node ./src/index-job-runner.ts",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test-coverage": "vitest run --coverage",
+		"test-api-lambda": "node ./src/test-api-lambda.ts",
+		"test-job-runner": "node ./src/test-job-runner.ts",
+		"check": "biome check --write",
+		"format": "biome format --write",
+		"lint": "biome lint",
+		"lint:write": "biome lint --write",
+		"clean": "rm -rf dist build"
+	},
+	"author": "ikenley",
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ikenley/manual-approval"
+	},
+	"dependencies": {
+		"@aws-sdk/client-dynamodb": "^3.1090.0",
+		"@aws-sdk/client-ses": "^3.1106.0",
+		"@aws-sdk/client-sfn": "^3.1106.0",
+		"@aws-sdk/client-ssm": "^3.1091.0",
+		"@aws-sdk/lib-dynamodb": "^3.1104.0",
+		"@aws-sdk/lib-storage": "^3.1075.0",
+		"@vendia/serverless-express": "^4.12.6",
+		"awilix": "^13.0.5",
+		"cors": "^2.8.6",
+		"dotenv": "^17.4.2",
+		"express": "^5.2.1",
+		"helmet": "^8.3.0",
+		"method-override": "^3.0.0",
+		"morgan": "^1.11.0",
+		"winston": "^3.19.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.7",
+		"@types/aws-lambda": "^8.10.162",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
+		"@types/method-override": "^3.0.0",
+		"@types/morgan": "^1.9.10",
+		"@types/node": "^26.1.1",
+		"@types/supertest": "^7.2.0",
+		"@vitest/coverage-v8": "^4.1.10",
+		"eslint": "^10.7.0",
+		"supertest": "^7.2.2",
+		"typescript": "^6.0.3",
+		"vitest": "^4.1.10"
+	}
+}

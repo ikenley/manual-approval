@@ -11,7 +11,7 @@ Example `ManualApprovalRequest` record:
     created: "2026-09-06T09:51:12.793Z", // new Date().toISOString()
     ttl: 1788774828, // Math.floor(Date.now() / 1000)
     status: "pending" | "deny" | "approve",
-    confirmed: "2026-09-06T09:57:52.626Z" // Confirmation date. If pending, null.
+    confirmedOn: "2026-09-06T09:57:52.626Z" // Confirmation date. If pending, null.
     schema: "sfn:1", // schema allows for different payload values
     payload: {sfnArn: "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine"}
 }
@@ -21,4 +21,6 @@ Example `ManualApprovalRequest` record:
   - It is hosted on S3 behind CloudFront
 3. The `manual-approval-api` will fetch the `ManualApprovalRequest` record, send a `SendTaskSuccess` to the Step Function, and then redirect the user to the AWS Console.
 - The `manual-approval-api` is a TypeScript Express.js API service. For cost and hosting simplicity, it will be wrapped in a Lambda Function. The request path will be CloudFront > API Gateway > Lambda. This reduces cost and maintance while abstracting things like throttling. 
+
+
 
